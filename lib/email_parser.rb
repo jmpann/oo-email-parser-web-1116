@@ -5,16 +5,14 @@
 require 'pry'
 class EmailParser
 
-  def initialize(email)
-    @email=email
-  end
+attr_accessor :emails
 
-  def email
-    @email
-  end
+def initialize(emails)
+  @emails = emails
+end
 
-  def email=(email_address)
-    @email=email_address
-  end
-
+def parse
+  reg = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i
+  @emails.scan(reg).uniq
+end
 end
